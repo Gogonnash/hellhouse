@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Das Höllenhaus" startnode="7" creator="Twine" creator-version="2.12.0" format="SugarCube" format-version="2.37.3" ifid="9ED00D9B-AEE5-4A14-B181-A8AD3AB087C4" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">.--macro-ctp-hidden {
+	<tw-storydata name="Das Höllenhaus" startnode="7" creator="Twine" creator-version="2.12.0" format="SugarCube" format-version="2.37.3" ifid="9ED00D9B-AEE5-4A14-B181-A8AD3AB087C4" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">.--macro-ctp-hidden {
 	display: none;
 }
 
@@ -151,8 +151,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     margin: 0 auto;
   	hyphens: auto;
     -webkit-hyphens: auto;
-  	padding-top: 10vh;
+  	padding-top: 7vh;
     padding-bottom: 5vh;
+  	font-family: Georgia, serif;
+  	font-size; 1.15em;
+  	line-height: 1.65;
+  	letter-spacing: 0.01em;
 }
 
 html[data-tags~="centered"] #passages {
@@ -161,7 +165,22 @@ html[data-tags~="centered"] #passages {
     justify-content: center;
     min-height: 80vh;
     padding-top: 0;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
+}
+
+.p-header {
+	font-family: ui-monospace, Monaco, "Courier New", monospace;
+    white-space: pre;
+    line-height: 1;
+    letter-spacing: 0;
+    font-size: 11px;
+    overflow-x: hidden;
+  	scrollbar-width: none;
+}
+
+.p-header::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+  </style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
 	"use strict";
 
 	$(document).on(":passageinit", () => {
@@ -478,15 +497,15 @@ Möge dich das Gute schützen!&lt;/p&gt;
 &lt;/div&gt;
 &lt;&lt;back &quot;zurück&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Select Difficulty" tags="" position="5375,375" size="100,100">&lt;h3&gt;Bevor dein Abenteuer beginnt hast du die Möglichkeit deinen Schwierigkeitsgrad zu wählen!&lt;/h3&gt;
 
-Im einfachen Modus startest du mit allen zufälligen Werten auf dem Maximum.
+Im einfachen Modus startest du mit den bestmöglichen Werten..
 Im normalen Modus startest du mit leicht zufälligen Werten. (empfohlen)
-Im schweren Modus startest du mit allen zufälligen Werten auf auf dem Minimum.
+Im schweren Modus startest du mit dem Minimum an Werten.
 
 &lt;&lt;radiobutton &quot;$schwierigkeit&quot; &quot;einfach&quot;&gt;&gt; Einfach
 &lt;&lt;radiobutton &quot;$schwierigkeit&quot; &quot;normal&quot; checked&gt;&gt; Normal
 &lt;&lt;radiobutton &quot;$schwierigkeit&quot; &quot;schwer&quot;&gt;&gt; Schwer
 
-[[Ich habe meine Auswahl getroffen|Startwerte bestimmen]] </tw-passagedata><tw-passagedata pid="6" name="StoryInit" tags="nobr" position="5350,250" size="100,100">&lt;&lt;set $schwierigkeit to &quot;normal&quot;&gt;&gt;
+[[Weiter|Startwerte bestimmen]] </tw-passagedata><tw-passagedata pid="6" name="StoryInit" tags="nobr" position="5350,250" size="100,100">&lt;&lt;set $schwierigkeit to &quot;normal&quot;&gt;&gt;
 &lt;&lt;set $spielBegonnen to false&gt;&gt;
 &lt;&lt;set $azazelRichtung to undefined&gt;&gt;
 &lt;&lt;set $gesellschaftszimmerRichtung to undefined&gt;&gt;
@@ -556,11 +575,16 @@ Im schweren Modus startest du mit allen zufälligen Werten auf auf dem Minimum.
 &lt;&lt;set $antwort_M to &quot;&quot;&gt;&gt;
 &lt;&lt;set $antwort_S to &quot;&quot;&gt;&gt;
 &lt;&lt;set $antwort_Punktzahl to 0&gt;&gt;
-</tw-passagedata><tw-passagedata pid="7" name="Start" tags="" position="5225,375" size="100,100">&lt;h1&gt;Das Höllenhaus&lt;/h1&gt;
+</tw-passagedata><tw-passagedata pid="7" name="Start" tags="" position="5225,375" size="100,100">&lt;div class=&quot;p-header&quot;&gt;
+                             ▄ ▄                                                   
+████▄   ▄▄▄   ▄▄▄▄   ██  ██  ▄▄▄  ▄▄    ▄▄    ▄▄▄▄▄ ▄▄  ▄▄ ▄▄ ▄▄  ▄▄▄  ▄▄ ▄▄  ▄▄▄▄ 
+██  ██ ██▀██ ███▄▄   ██████ ██▀██ ██    ██    ██▄▄  ███▄██ ██▄██ ██▀██ ██ ██ ███▄▄ 
+████▀  ██▀██ ▄▄██▀   ██  ██ ▀███▀ ██▄▄▄ ██▄▄▄ ██▄▄▄ ██ ▀██ ██ ██ ██▀██ ▀███▀ ▄▄██▀  
+&lt;/div&gt;
 &lt;h3&gt;Disclaimer&lt;/h3&gt;
-&lt;p&gt;//&quot;Das Höllenhaus&quot;// ist die digitale Umsetzung des gleichnamigen Abenteuers aus //&quot;Das 3. große Fantasy-Abenteuer-Spielbuch&quot;// von //Steve Jackson// und //Ian Livingstone//.
+&lt;p&gt;//&amp;bdquo;Das Höllenhaus&amp;ldquo;// ist die digitale Umsetzung des gleichnamigen Abenteuers aus //&amp;bdquo;Das 3. große Fantasy-Abenteuer-Spielbuch&amp;ldquo;// von //Steve Jackson// und //Ian Livingstone//.
 
-In der Buchvorlage werden Statuswerte und Inventar normalerweise handschriftlich mitgeführt. Diese digitale Version übernimmt alle Verwaltungsaufgaben automatisch, sodass du dich voll und ganz auf die Geschichte und deine Entscheidungen konzentrieren kannst. Buchspezifische Verweise (wie z. B. „Weiter geht es bei Abschnitt…“) wurden leicht angepasst, um das Spielgefühl und die Immersion zu verbessern.&lt;/p&gt;
+In der Buchvorlage werden Statuswerte und Inventar normalerweise handschriftlich mitgeführt. Diese digitale Version übernimmt alle Verwaltungsaufgaben automatisch, sodass du dich voll und ganz auf die Geschichte und deine Entscheidungen konzentrieren kannst. Buchspezifische Verweise (wie z. B. &amp;bdquo;Weiter geht es bei Abschnitt…&amp;ldquo;) wurden leicht angepasst, um das Spielgefühl und die Immersion zu verbessern.&lt;/p&gt;
 &lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;h2&gt;[[Start|Select Difficulty]] &lt;/h2&gt;</tw-passagedata><tw-passagedata pid="8" name="Startwerte bestimmen" tags="" position="5525,375" size="100,100">&lt;&lt;silent&gt;&gt;
 	&lt;&lt;switch $schwierigkeit&gt;&gt;
@@ -570,12 +594,12 @@ In der Buchvorlage werden Statuswerte und Inventar normalerweise handschriftlich
 			&lt;&lt;set $startGlueck to 12&gt;&gt;
 			&lt;&lt;set $maxFurcht to 12&gt;&gt;
     	&lt;&lt;case &quot;normal&quot;&gt;&gt;
-        	&lt;&lt;set $startGewandtheit to random(1, 4) + 5&gt;&gt;
+        	&lt;&lt;set $startGewandtheit to random(1, 3) + 6&gt;&gt;
 			&lt;&lt;set $startStaerke to random(1, 4) + random (1, 4) + 14&gt;&gt;
 			&lt;&lt;set $startGlueck to random(1, 4) + 8&gt;&gt;
 			&lt;&lt;set $maxFurcht to random(1, 2) + 9&gt;&gt;
     	&lt;&lt;case &quot;schwer&quot;&gt;&gt;
-            &lt;&lt;set $startGewandtheit to 6&gt;&gt;
+            &lt;&lt;set $startGewandtheit to 7&gt;&gt;
 			&lt;&lt;set $startStaerke to 16&gt;&gt;
 			&lt;&lt;set $startGlueck to 8&gt;&gt;
 			&lt;&lt;set $maxFurcht to 9&gt;&gt;
@@ -813,7 +837,9 @@ Du dankst ihm und folgst dem Butler aus dem Speisesaal.
 
 Du stehst auf. Der Graf hat recht. Du bist müde, aber es ist ja auch schon weit nach Mitternacht. Du stolperst, kannst dich aber noch am Tisch festhalten. Puh! Dass du so müde bist, hättest du nun auch wieder nicht gedacht. Oder hast du zu viel getrunken? Dir ist schwindelig und die Stimme deines Gastgebers verschmilzt mit einem Dröhnen in deinen Ohren, das immer lauter wird. Schließlich fällst du zu Boden und verlierst das Bewusstsein . . . 
 
-[[Weiter|173]]</tw-passagedata><tw-passagedata pid="47" name="319" tags="" position="6750,2300" size="100,100">Der Butler bringt dir eine Platte mit Käse und eine Kanne dampfenden Kaffee herein. Er schneidet ein Stück Käse ab und schenkt den Kaffee in eine Porzellantasse. Dann setzt ihr die [[Unterhaltung|74]] fort.</tw-passagedata><tw-passagedata pid="48" name="5" tags="perfectPath" position="7350,2225" size="100,100">Das Schlafzimmer ist für dich hergerichtet worden. Obwohl der Raum ziemlich klein ist, wirkt er durch einen riesigen Spiegel viel größer. Eine frischbezogene, weiße Decke liegt zurückgeschlagen auf dem Bett und ein Feuer im Kamin erwärmt das Zimmer. Während der Butler die Tür hinter sich schließt, gehst du zum Feuer. Deine Lage beunruhigt dich etwas. Wenn du dich nicht bald auf den Weg machst, verpasst du deine Verabredung; aber wenn es stimmt, dass die Telefonleitung zusammengebrochen ist, bleibt dir wohl nichts anderes übrig, als zu warten. Im Moment ist es wohl das Beste, deine nasse Kleidung vor das Feuer zu hängen und ins [[Bett|23]] zu gehen; vielleicht willst du aber lieber den [[Raum verlassen|59]].</tw-passagedata><tw-passagedata pid="49" name="23" tags="perfectPath" position="6725,2425" size="100,100">Das Bett ist so warm und bequem, dass du schon nach kurzer Zeit einschläfst. Seltsame und verwirrende Gedanken gehen dir im Schlaf durch den Kopf und als du aufwachst, bist du in kalten Schweiß gebadet. Ein Geräusch hat dich gestört; anscheinend hat jemand eine Tür geschlossen. Als du dich umsiehst, bemerkst du neben deinem Bett ein Glas mit einer klaren Flüssigkeit. //Jemand hat dir etwas zu trinken gebracht!// Du springst aus dem Bett und willst die Tür öffnen, um nachzusehen, wer es war, aber sie ist abgeschlossen. Willst du das [[Getränk|45]], das man dir gebracht hat, zu dir nehmen oder versuchen, die [[Tür aufzubrechen|128]]?</tw-passagedata><tw-passagedata pid="50" name="59" tags="" position="7100,2375" size="100,100">Die Tür ist abgeschlossen! Anscheinend möchte dein Gastgeber verhindern, dass du durch das Haus streifst. Willst du die [[Tür aufbrechen|79]] oder [[ins Bett|23]] klettern? Wenn du willst, kannst du auch so tun, als gingest du zu Bett, indem du das Licht ausmachst und einfach [[abwarten|63]].</tw-passagedata><tw-passagedata pid="51" name="358" tags="perfectPath" position="6250,2475" size="100,100">Langsam öffnest du die Tür und schaust dich schnell in dem Zimmer um. Es befindet sich zur Zeit niemand darin, aber es ist schrecklich unordentlich. Nach der Einrichtung zu schließen ist dies so etwas wie ein Forschungslabor: ein Messingfernrohr ist durch ein Fenster zum Himmel gerichtet, an die Wand sind Tabellen und Formelsammlungen geheftet, an einem Haken hängt ein menschliches Skelett und auf einer Werkbank ist mit mehreren Glaskolben ein Versuch aufgebaut. Die Einrichtungsgegenstände scheinen alt und wertvoll zu sein und aus dem letzten Jahrhundert zu stammen.
+[[Weiter|173]]</tw-passagedata><tw-passagedata pid="47" name="319" tags="" position="6750,2300" size="100,100">Der Butler bringt dir eine Platte mit Käse und eine Kanne dampfenden Kaffee herein. Er schneidet ein Stück Käse ab und schenkt den Kaffee in eine Porzellantasse. Dann setzt ihr die Unterhaltung fort.
+
+[[Weiter|74]]</tw-passagedata><tw-passagedata pid="48" name="5" tags="perfectPath" position="7350,2225" size="100,100">Das Schlafzimmer ist für dich hergerichtet worden. Obwohl der Raum ziemlich klein ist, wirkt er durch einen riesigen Spiegel viel größer. Eine frischbezogene, weiße Decke liegt zurückgeschlagen auf dem Bett und ein Feuer im Kamin erwärmt das Zimmer. Während der Butler die Tür hinter sich schließt, gehst du zum Feuer. Deine Lage beunruhigt dich etwas. Wenn du dich nicht bald auf den Weg machst, verpasst du deine Verabredung; aber wenn es stimmt, dass die Telefonleitung zusammengebrochen ist, bleibt dir wohl nichts anderes übrig, als zu warten. Im Moment ist es wohl das Beste, deine nasse Kleidung vor das Feuer zu hängen und ins [[Bett|23]] zu gehen; vielleicht willst du aber lieber den [[Raum verlassen|59]].</tw-passagedata><tw-passagedata pid="49" name="23" tags="perfectPath" position="6725,2425" size="100,100">Das Bett ist so warm und bequem, dass du schon nach kurzer Zeit einschläfst. Seltsame und verwirrende Gedanken gehen dir im Schlaf durch den Kopf und als du aufwachst, bist du in kalten Schweiß gebadet. Ein Geräusch hat dich gestört; anscheinend hat jemand eine Tür geschlossen. Als du dich umsiehst, bemerkst du neben deinem Bett ein Glas mit einer klaren Flüssigkeit. //Jemand hat dir etwas zu trinken gebracht!// Du springst aus dem Bett und willst die Tür öffnen, um nachzusehen, wer es war, aber sie ist abgeschlossen. Willst du das [[Getränk|45]], das man dir gebracht hat, zu dir nehmen oder versuchen, die [[Tür aufzubrechen|128]]?</tw-passagedata><tw-passagedata pid="50" name="59" tags="" position="7100,2375" size="100,100">Die Tür ist abgeschlossen! Anscheinend möchte dein Gastgeber verhindern, dass du durch das Haus streifst. Willst du die [[Tür aufbrechen|79]] oder [[ins Bett|23]] klettern? Wenn du willst, kannst du auch so tun, als gingest du zu Bett, indem du das Licht ausmachst und einfach [[abwarten|63]].</tw-passagedata><tw-passagedata pid="51" name="358" tags="perfectPath" position="6250,2475" size="100,100">Langsam öffnest du die Tür und schaust dich schnell in dem Zimmer um. Es befindet sich zur Zeit niemand darin, aber es ist schrecklich unordentlich. Nach der Einrichtung zu schließen ist dies so etwas wie ein Forschungslabor: ein Messingfernrohr ist durch ein Fenster zum Himmel gerichtet, an die Wand sind Tabellen und Formelsammlungen geheftet, an einem Haken hängt ein menschliches Skelett und auf einer Werkbank ist mit mehreren Glaskolben ein Versuch aufgebaut. Die Einrichtungsgegenstände scheinen alt und wertvoll zu sein und aus dem letzten Jahrhundert zu stammen.
 
 Willst du dir den [[Raum näher ansehen|117]] oder lieber wieder die [[Tür schließen|11]]?</tw-passagedata><tw-passagedata pid="52" name="229" tags="" position="6400,2500" size="100,100">Du folgst der Galerie bis zu einer Tür auf der rechten Seite. Ein Namensschild bezeichnet das Zimmer als //Erasmus-Raum//. Willst du den Raum [[betreten|140]]?
 
@@ -843,7 +869,9 @@ Willst du es [[nochmals versuchen|106]], die Tür einzurennen? Oder siehst du ei
 
 Plötzlich hörst du schlurfende [[Schritte|158]] im Flur vor deinem Zimmer.
 &lt;&lt;set $furcht++&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="158" tags="perfectPath" position="6750,2700" size="100,100">Du kannst langsame Schritte hören, die sich diesem Raum nähern. Draußen halten sie an, dann klappern Schlüssel, als aufgeschlossen wird! Du musst dich schnell entscheiden, ob du [[ins Bett|179]] springst und so tust, als ob du schläfst oder dich [[hinter der Tür|373]] versteckst, um denjenigen, der herein kommt &amp;ndash; wer immer es ist &amp;ndash; zu überraschen.</tw-passagedata><tw-passagedata pid="61" name="106" tags="schaden" position="7150,2700" size="100,100">Du rennst mit der Schulter gegen die Tür. Sie erbebt zwar, hält aber stand. Dafür schmerzt deine Schulter. &lt;span class=&quot;staerke_color&quot;&gt;-2 Stärke&lt;/span&gt;
-Da die Tür aus massivem Holz ist, ist es unwahrscheinlich, dass du sie ohne weitere Verletzungen aufbrechen kannst. Daher [[gibst du auf|158]].
+Da die Tür aus massivem Holz ist, ist es unwahrscheinlich, dass du sie ohne weitere Verletzungen aufbrechen kannst. Daher gibst du auf.
+
+[[Weiter|158]]
 &lt;&lt;set $staerke-=2&gt;&gt;
 &lt;&lt;if $staerke &lt;0&gt;&gt;
 	&lt;&lt;set $staerke to 0&gt;&gt;
