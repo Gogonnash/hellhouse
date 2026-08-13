@@ -180,7 +180,12 @@ html[data-tags~="centered"] #passages {
 .p-header::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge */
 }
-  </style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
+  
+#keller-link a {
+    color: inherit;
+    text-decoration: none;
+    cursor: text;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
 	"use strict";
 
 	$(document).on(":passageinit", () => {
@@ -359,7 +364,23 @@ Config.navigation.override = function (destination) {
 };
 
 Config.history.controls = false;
-Config.history.maxStates = 2;</script><tw-tag name="secret-words" color="green"></tw-tag><tw-tag name="geheimeWorte" color="green"></tw-tag><tw-tag name="kampf" color="blue"></tw-tag><tw-tag name="furcht" color="purple"></tw-tag><tw-tag name="schaden" color="orange"></tw-tag><tw-tag name="game-over" color="red"></tw-tag><tw-tag name="fund" color="green"></tw-tag><tw-tag name="perfectPath" color="yellow"></tw-tag><tw-passagedata pid="1" name="Vorgeschichte" tags="" position="5675,375" size="100,100">&lt;h1&gt;Vorgeschichte&lt;/h1&gt;
+Config.history.maxStates = 2;
+
+setup.isMobile = function () {
+    return (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) 
+        || ('ontouchstart' in window) 
+        || (navigator.maxTouchPoints > 0);
+};
+
+window.addEventListener('error', function (event) {
+    var msg = (event.message || '').toLowerCase();
+
+    // Fängt den generischen Browser-/Addon-Fehler ab
+    if (msg.indexOf('script error') !== -1) {
+        event.stopImmediatePropagation();
+        return true;
+    }
+}, true);</script><tw-tag name="secret-words" color="green"></tw-tag><tw-tag name="geheimeWorte" color="green"></tw-tag><tw-tag name="kampf" color="blue"></tw-tag><tw-tag name="furcht" color="purple"></tw-tag><tw-tag name="schaden" color="orange"></tw-tag><tw-tag name="game-over" color="red"></tw-tag><tw-tag name="fund" color="green"></tw-tag><tw-tag name="perfectPath" color="yellow"></tw-tag><tw-passagedata pid="1" name="Vorgeschichte" tags="" position="5675,375" size="100,100">&lt;h1&gt;Vorgeschichte&lt;/h1&gt;
 &lt;&lt;set _step = 0&gt;&gt;
 &lt;&lt;ctp &quot;Vorgeschichte&quot;&gt;&gt;
 &lt;h3&gt;Eine stürmische Herbstnacht im Jahr 1985 . . .&lt;/h3&gt;
@@ -1794,7 +1815,7 @@ Ihre Stimme schwindet, als habe die Unterhaltung sie zu sehr angestrengt. Du wen
 
 Die Frau schließt die Augen, als ob die Unterhaltung, sie zu sehr angestrengt hätte. Du wendest dich ab und denkst über das nach, was sie dir gesagt hat.
 
-&#39;&#39;Hinweis&#39;&#39;: //Wenn du an der Stelle bist, an der sich die genannte Geheimtür befindet (unter der Kellertreppe), kannst du danach suchen, indem du auf der Tastatur, die Taste &quot;K&quot; drückst.// Es wird bei diesem Abschnitt dann keinen weiteren Hinweis mehr geben.
+&#39;&#39;Hinweis&#39;&#39;: //Wenn du an der Stelle bist, an der sich die genannte Geheimtür befindet (unter der Kellertreppe), kannst du danach suchen, &lt;&lt;if setup.isMobile()&gt;&gt;indem du das Wort &#39;&#39;Stufen&#39;&#39; antippst, obwohl es nicht aussieht, wie ein Link!&lt;&lt;else&gt;&gt;indem du auf der Tastatur, die Taste &quot;K&quot; drückst.//&lt;&lt;/if&gt;&gt; Es wird bei diesem Abschnitt dann keinen weiteren Hinweis mehr geben.
 
 Aber zuerst musst du das Losungswort finden. Du verlässt den Raum.
 
@@ -2114,10 +2135,10 @@ Die Treppe endet an einer Tür, unter der Licht hindurchscheint und die Flederm�
 &lt;&lt;set $staerke--&gt;&gt;
 &lt;&lt;if $staerke &lt;0&gt;&gt;
 	&lt;&lt;set $staerke to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="276" name="320" tags="perfectPath" position="3050,5675" size="100,100">Du suchst unter den Stufen Schutz und wehrst die Fledermäuse mit den Händen ab. Sobald sie erkennen, dass sie so nicht an dich herankommen, flattern sie in die Ecke zurück, aus der sie gekommen sind. Als alles wieder ruhig ist, kannst du dir deinen nächsten Schritt überlegen. Willst du [[die Treppe hinaufsteigen|293]] und die Tür oben öffnen, oder willst du bleiben, um das Zimmer der Fledermäuse genauer zu [[untersuchen|330]]?
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="276" name="320" tags="perfectPath" position="3050,5675" size="100,100">Du suchst unter den &lt;&lt;if setup.isMobile() and State.variables.geheimgangWissen&gt;&gt;@@#keller-link;[[Stufen|276]]@@&lt;&lt;else&gt;&gt;Stufen&lt;&lt;/if&gt;&gt; Schutz und wehrst die Fledermäuse mit den Händen ab. Sobald sie erkennen, dass sie so nicht an dich herankommen, flattern sie in die Ecke zurück, aus der sie gekommen sind. Als alles wieder ruhig ist, kannst du dir deinen nächsten Schritt überlegen. Willst du [[die Treppe hinaufsteigen|293]] und die Tür oben öffnen, oder willst du bleiben, um das Zimmer der Fledermäuse genauer zu [[untersuchen|330]]?
 
 &lt;div id=&quot;geheimnis-bereich&quot;&gt;&lt;/div&gt;
-&lt;&lt;script&gt;&gt;
+&lt;&lt;if not setup.isMobile()&gt;&gt;&lt;&lt;script&gt;&gt;
 $(document).off(&#39;.geheimgang&#39;);
 $(document).on(&#39;keyup.geheimgang&#39;, function(e) {
 	if (e.key.toLowerCase() === &#39;k&#39;) {		
@@ -2129,7 +2150,8 @@ $(document).on(&#39;keyup.geheimgang&#39;, function(e) {
 		}
 	}
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="277" name="343" tags="" position="3700,5725" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;/script&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="277" name="343" tags="" position="3700,5725" size="100,100">&lt;&lt;silent&gt;&gt;
 	&lt;&lt;set $gegnerName to &quot;Fledermäuse&quot;&gt;&gt;
 	&lt;&lt;set $gegnerStaerke to 4&gt;&gt;
     &lt;&lt;set $gegnerGrenzwert to 0&gt;&gt;
@@ -2793,7 +2815,7 @@ Er sieht dich herzerweichend an und fällt auf die Knie. Wieder starrst du ihn n
 
 * [[In der Ecke, aus der die Fledermäuse kamen|165]]
 * [[Entlang der Rückwand|356]]
-* [[Unter den Stufen|61]]</tw-passagedata><tw-passagedata pid="383" name="165" tags="" position="2375,6025" size="100,100">Du durchsuchst die Ecke, kannst aber nichts Ungewöhnliches finden, vielleicht auch deshalb, weil dich der durchdringende Geruch des Fledermauskots zwingt, deine Suche bald abzubrechen. Du musst dich entscheiden, was du nun tun willst. Suchst du [[unter den Stufen|61]] weiter, siehst du [[an der Hinterwand|356]] nach oder [[steigst du die Treppe hinauf|293]]?</tw-passagedata><tw-passagedata pid="384" name="356" tags="" position="2350,6350" size="100,100">Du suchst die Wand nach einer Geheimtür ab, kannst aber keine finden. Als du schon aufgeben willst, berührst du zufällig mit der linken Hand einen losen Stein, hinter der sich ein Hebel verbirgt. Sobald du daran ziehst, ertönt neben dir ein Rumpeln; ein Teil der Wand gleitet zur Seite, so dass eine Öffnung entsteht, durch die du dich gerade eben zwängen könntest. Du blickst hinein, kannst aber in der pechschwarzen Dunkelheit nichts erkennen. Willst du [[durch die Öffnung treten|387]] oder es lieber nicht riskieren, sondern statt dessen [[die Treppe hinaufgehen|293]]?</tw-passagedata><tw-passagedata pid="385" name="61" tags="" position="2825,5825" size="100,100">Unter den Stufen findest du nichts Ungewöhnliches, obwohl einige der Ziegel in der Wand so aussehen, als seien sie erst kürzlich ausgetauscht worden. Du kannst dir entweder die Ecke anschauen, [[aus der die Fledermäuse kamen|165]], die [[Rückwand untersuchen|356]] oder die Stufen [[zur Tür über dir hinaufsteigen|293]].
+* [[Unter den Stufen|61]]</tw-passagedata><tw-passagedata pid="383" name="165" tags="" position="2375,6025" size="100,100">Du durchsuchst die Ecke, kannst aber nichts Ungewöhnliches finden, vielleicht auch deshalb, weil dich der durchdringende Geruch des Fledermauskots zwingt, deine Suche bald abzubrechen. Du musst dich entscheiden, was du nun tun willst. Suchst du [[unter den Stufen|61]] weiter, siehst du [[an der Hinterwand|356]] nach oder [[steigst du die Treppe hinauf|293]]?</tw-passagedata><tw-passagedata pid="384" name="356" tags="" position="2350,6350" size="100,100">Du suchst die Wand nach einer Geheimtür ab, kannst aber keine finden. Als du schon aufgeben willst, berührst du zufällig mit der linken Hand einen losen Stein, hinter der sich ein Hebel verbirgt. Sobald du daran ziehst, ertönt neben dir ein Rumpeln; ein Teil der Wand gleitet zur Seite, so dass eine Öffnung entsteht, durch die du dich gerade eben zwängen könntest. Du blickst hinein, kannst aber in der pechschwarzen Dunkelheit nichts erkennen. Willst du [[durch die Öffnung treten|387]] oder es lieber nicht riskieren, sondern statt dessen [[die Treppe hinaufgehen|293]]?</tw-passagedata><tw-passagedata pid="385" name="61" tags="" position="2825,5825" size="100,100">Unter den &lt;&lt;if setup.isMobile() and State.variables.geheimgangWissen&gt;&gt;@@#keller-link;[[Stufen|276]]@@&lt;&lt;else&gt;&gt;Stufen&lt;&lt;/if&gt;&gt; findest du nichts Ungewöhnliches, obwohl einige der Ziegel in der Wand so aussehen, als seien sie erst kürzlich ausgetauscht worden. Du kannst dir entweder die Ecke anschauen, [[aus der die Fledermäuse kamen|165]], die [[Rückwand untersuchen|356]] oder die Stufen [[zur Tür über dir hinaufsteigen|293]].
 
 &lt;div id=&quot;geheimnis-bereich&quot;&gt;&lt;/div&gt;
 &lt;&lt;script&gt;&gt;
