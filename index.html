@@ -372,15 +372,42 @@ setup.isMobile = function () {
         || (navigator.maxTouchPoints > 0);
 };
 
-window.addEventListener('error', function (event) {
-    var msg = (event.message || '').toLowerCase();
+/* ==========================================================
+   Globaler Error-Filter gegen Ghost-Fehler in Firefox Mobile
+   ========================================================== */
 
-    // Fängt den generischen Browser-/Addon-Fehler ab
-    if (msg.indexOf('script error') !== -1) {
-        event.stopImmediatePropagation();
-        return true;
+// 1. window.onerror direkt abfangen & filtern
+var _origOnError = window.onerror;
+window.onerror = function (msg, url, line, col, err) {
+    var errorString = (msg || '').toString().toLowerCase();
+
+    // Typische Firefox Mobile / Extension / CORS Ghost-Errors
+    if (
+        errorString.includes('script error') || 
+        errorString.includes('resizeobserver') ||
+        errorString.includes('ns_error') ||
+        !url // Fehler ohne Quell-URL stammen immer von Browser-Injections
+    ) {
+        console.warn('Unterdrückter Browser-Ghost-Error:', msg);
+        return true; // Verhindert das SugarCube-Popup komplett
     }
-}, true);</script><tw-tag name="secret-words" color="green"></tw-tag><tw-tag name="geheimeWorte" color="green"></tw-tag><tw-tag name="kampf" color="blue"></tw-tag><tw-tag name="furcht" color="purple"></tw-tag><tw-tag name="schaden" color="orange"></tw-tag><tw-tag name="game-over" color="red"></tw-tag><tw-tag name="fund" color="green"></tw-tag><tw-tag name="perfectPath" color="yellow"></tw-tag><tw-passagedata pid="1" name="Vorgeschichte" tags="" position="5675,375" size="100,100">&lt;h1&gt;Vorgeschichte&lt;/h1&gt;
+
+    // Echte Spielfehler weiterhin ganz normal durchreichen
+    if (typeof _origOnError === 'function') {
+        return _origOnError.apply(this, arguments);
+    }
+    return false;
+};
+
+// 2. Unbehandelte Promise-Rejections abfangen (z. B. blockierte Font-Downloads)
+window.addEventListener('unhandledrejection', function (event) {
+    var reason = (event.reason && (event.reason.message || event.reason)).toString().toLowerCase();
+    
+    if (reason.includes('script error') || reason.includes('fetch') || reason.includes('font')) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+    }
+});</script><tw-tag name="secret-words" color="green"></tw-tag><tw-tag name="geheimeWorte" color="green"></tw-tag><tw-tag name="kampf" color="blue"></tw-tag><tw-tag name="furcht" color="purple"></tw-tag><tw-tag name="schaden" color="orange"></tw-tag><tw-tag name="game-over" color="red"></tw-tag><tw-tag name="fund" color="green"></tw-tag><tw-tag name="perfectPath" color="yellow"></tw-tag><tw-passagedata pid="1" name="Vorgeschichte" tags="" position="5675,375" size="100,100">&lt;h1&gt;Vorgeschichte&lt;/h1&gt;
 &lt;&lt;set _step = 0&gt;&gt;
 &lt;&lt;ctp &quot;Vorgeschichte&quot;&gt;&gt;
 &lt;h3&gt;Eine stürmische Herbstnacht im Jahr 1985 . . .&lt;/h3&gt;
