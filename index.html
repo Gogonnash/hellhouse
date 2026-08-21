@@ -623,12 +623,16 @@ Im schweren Modus startest du mit dem Minimum an Werten.
 &lt;&lt;set $antwort_M to &quot;&quot;&gt;&gt;
 &lt;&lt;set $antwort_S to &quot;&quot;&gt;&gt;
 &lt;&lt;set $antwort_Punktzahl to 0&gt;&gt;
-</tw-passagedata><tw-passagedata pid="7" name="Start" tags="" position="5225,375" size="100,100">&lt;div class=&quot;p-header&quot;&gt;
+</tw-passagedata><tw-passagedata pid="7" name="Start" tags="" position="5225,375" size="100,100">&lt;&lt;if setup.isMobile()&gt;&gt;\
+&lt;h1&gt;Das Höllenhaus&lt;/h1&gt;
+&lt;&lt;else&gt;&gt;\
+&lt;div class=&quot;p-header&quot;&gt;
                              ▄ ▄                                                   
 ████▄   ▄▄▄   ▄▄▄▄   ██  ██  ▄▄▄  ▄▄    ▄▄    ▄▄▄▄▄ ▄▄  ▄▄ ▄▄ ▄▄  ▄▄▄  ▄▄ ▄▄  ▄▄▄▄ 
 ██  ██ ██▀██ ███▄▄   ██████ ██▀██ ██    ██    ██▄▄  ███▄██ ██▄██ ██▀██ ██ ██ ███▄▄ 
 ████▀  ██▀██ ▄▄██▀   ██  ██ ▀███▀ ██▄▄▄ ██▄▄▄ ██▄▄▄ ██ ▀██ ██ ██ ██▀██ ▀███▀ ▄▄██▀  
 &lt;/div&gt;
+&lt;&lt;/if&gt;&gt;\
 &lt;h3&gt;Disclaimer&lt;/h3&gt;
 &lt;p&gt;//&amp;bdquo;Das Höllenhaus&amp;ldquo;// ist die digitale Umsetzung des gleichnamigen Abenteuers aus //&amp;bdquo;Das 3. große Fantasy-Abenteuer-Spielbuch&amp;ldquo;// von //Steve Jackson// und //Ian Livingstone//.
 
